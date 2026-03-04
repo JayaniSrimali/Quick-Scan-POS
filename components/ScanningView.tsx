@@ -23,8 +23,11 @@ export default function ScanningView() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isStaffModalOpen, setIsStaffModalOpen] = useState(false);
     const [isBagsOpen, setIsBagsOpen] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const inputRef = useRef<HTMLInputElement>(null);
     const t = translations[language];
+
+    const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'Bakery', 'Meat', 'Beverages', 'Pantry', 'Snacks', 'Household'];
 
     useEffect(() => {
         const focus = () => {
@@ -57,6 +60,10 @@ export default function ScanningView() {
             setTimeout(() => setError(false), 2000);
         }
     };
+
+    const filteredQuickProducts = selectedCategory === 'All'
+        ? products.slice(0, 15)
+        : products.filter(p => p.category === selectedCategory);
 
     return (
         <div className="h-full flex flex-col bg-[#F8FAFC]">
@@ -166,13 +173,31 @@ export default function ScanningView() {
 
                 {/* Right: Cart Manifest */}
                 <div className="flex-1 bg-white rounded-[32px] shadow-premium border border-slate-100 overflow-hidden flex flex-col">
-                    <div className="px-8 py-6 border-b border-slate-50 flex items-center justify-between shrink-0">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-slate-900 text-white rounded-[12px] flex items-center justify-center shadow-lg"><ShoppingCart size={18} /></div>
-                            <h3 className="text-lg font-black text-slate-900 tracking-tight">Active Manifest</h3>
+                    <div className="px-8 py-6 border-b border-slate-50 flex flex-col gap-4 shrink-0">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-slate-900 text-white rounded-[12px] flex items-center justify-center shadow-lg"><ShoppingCart size={18} /></div>
+                                <h3 className="text-lg font-black text-slate-900 tracking-tight">Active Manifest</h3>
+                            </div>
+                            <div className="px-4 py-2 bg-slate-50 rounded-full border border-slate-100">
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{cart.length} SKU REGISTERED</span>
+                            </div>
                         </div>
-                        <div className="px-4 py-2 bg-slate-50 rounded-full border border-slate-100">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{cart.length} SKU REGISTERED</span>
+
+                        {/* Category Navigation Bar */}
+                        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setSelectedCategory(cat)}
+                                    className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all border ${selectedCategory === cat
+                                        ? 'bg-slate-900 text-white border-transparent shadow-lg shadow-slate-900/10'
+                                        : 'bg-white text-slate-400 border-slate-100 hover:border-slate-300'
+                                        }`}
+                                >
+                                    {cat === 'All' ? t.all_categories : t[cat.toLowerCase() as keyof typeof t] || cat}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
@@ -181,13 +206,15 @@ export default function ScanningView() {
                             <div className="h-full flex flex-col">
                                 <div className="flex items-center justify-between mb-6 shrink-0">
                                     <div>
-                                        <h4 className="text-base font-black text-slate-900 tracking-tight">Quick Select</h4>
-                                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Frequent items</p>
+                                        <h4 className="text-base font-black text-slate-900 tracking-tight">
+                                            {selectedCategory === 'All' ? 'Frequently Scanned' : `${selectedCategory} Department`}
+                                        </h4>
+                                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">TAP TO ADD TO MANIFEST</p>
                                     </div>
                                     <List size={18} className="text-slate-200" />
                                 </div>
                                 <div className="flex-1 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 overflow-y-auto pr-2 custom-scrollbar">
-                                    {products.slice(0, 10).map((p) => (
+                                    {filteredQuickProducts.map((p) => (
                                         <motion.button
                                             whileHover={{ scale: 1.02, y: -2 }}
                                             whileTap={{ scale: 0.98 }}
@@ -287,21 +314,66 @@ function SummaryStat({ label, value, color = "text-white" }: any) {
 }
 
 function SearchModal({ products, language, t, onClose, onAdd }: any) {
+    const [activeTab, setActiveTab] = useState('All');
+    const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'Bakery', 'Meat', 'Beverages', 'Pantry', 'Snacks', 'Household'];
+
+    const filtered = activeTab === 'All'
+        ? products
+        : products.filter((p: any) => p.category === activeTab);
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-slate-900/60 backdrop-blur-md">
-            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white rounded-[28px] w-full max-w-4xl max-h-[80vh] overflow-hidden flex flex-col">
-                <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-                    <h3 className="text-xl font-black text-slate-900 uppercase">Inventory Lookup</h3>
-                    <button onClick={onClose} className="w-10 h-10 rounded-full hover:bg-slate-50 flex items-center justify-center"><X size={20} /></button>
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white rounded-[32px] w-full max-w-5xl h-[80vh] overflow-hidden flex flex-col shadow-2xl">
+                <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                    <div>
+                        <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Inventory Lookup</h3>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1">Select items to add to current manifest</p>
+                    </div>
+                    <button onClick={onClose} className="w-12 h-12 rounded-full hover:bg-slate-200 flex items-center justify-center transition-all border border-slate-100"><X size={24} /></button>
                 </div>
-                <div className="flex-1 overflow-y-auto p-6 grid grid-cols-4 gap-4 custom-scrollbar">
-                    {products.map((p: any) => (
-                        <button key={p.id} onClick={() => { onAdd(p.barcode); onClose(); }} className="p-3 bg-slate-50 border border-slate-100 rounded-xl hover:border-emerald-500 transition-all text-center group text-xs">
-                            <img src={p.image} className="w-16 h-16 object-cover mx-auto mb-3 rounded-lg" />
-                            <p className="font-black text-slate-900 line-clamp-1">{language === 'EN' ? p.name : language === 'SI' ? p.nameSi : p.nameTa}</p>
-                            <p className="font-bold text-emerald-500 mt-1">Rs. {p.price}</p>
-                        </button>
-                    ))}
+
+                <div className="flex-1 flex overflow-hidden">
+                    {/* Sidebar Categories */}
+                    <div className="w-64 bg-slate-50 border-r border-slate-100 p-6 space-y-2 overflow-y-auto custom-scrollbar">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveTab(cat)}
+                                className={`w-full text-left px-5 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === cat
+                                        ? 'bg-slate-900 text-white shadow-lg'
+                                        : 'text-slate-400 hover:bg-white hover:text-slate-900 border border-transparent'
+                                    }`}
+                            >
+                                {cat === 'All' ? t.all_categories : t[cat.toLowerCase() as keyof typeof t] || cat}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Product Grid */}
+                    <div className="flex-1 overflow-y-auto p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 custom-scrollbar bg-white">
+                        <AnimatePresence mode="popLayout">
+                            {filtered.map((p: any) => (
+                                <motion.button
+                                    key={p.id}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    onClick={() => { onAdd(p.barcode); }}
+                                    className="p-4 bg-white border border-slate-100 rounded-[24px] hover:border-emerald-500 hover:shadow-xl transition-all text-center group relative overflow-hidden flex flex-col items-center"
+                                >
+                                    <div className="w-24 h-24 rounded-2xl overflow-hidden mb-4 shadow-sm border border-slate-100 p-2 group-hover:scale-105 transition-transform">
+                                        <img src={p.image} className="w-full h-full object-cover rounded-xl" />
+                                    </div>
+                                    <p className="font-black text-slate-900 text-xs line-clamp-2 min-h-[32px]">{language === 'EN' ? p.name : language === 'SI' ? p.nameSi : p.nameTa}</p>
+                                    <div className="mt-3 pt-3 border-t border-slate-50 w-full flex items-center justify-between">
+                                        <span className="font-black text-emerald-500 text-sm">Rs. {p.price}</span>
+                                        <div className="w-8 h-8 bg-emerald-50 text-emerald-500 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><Plus size={16} /></div>
+                                    </div>
+                                </motion.button>
+                            ))}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </motion.div>
         </div>

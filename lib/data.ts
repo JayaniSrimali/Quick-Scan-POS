@@ -1,97 +1,53 @@
 import { Product } from '@/types';
 
 export const products: Product[] = [
-    {
-        id: '1',
-        barcode: '1001',
-        name: 'Fresh Red Apple',
-        nameSi: 'නැවුම් රතු ඇපල්',
-        nameTa: 'புதிய சிவப்பு ஆப்பிள்',
-        price: 150.00,
-        image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6bccb?q=80&w=2574&auto=format&fit=crop',
-        category: 'Fruits'
-    },
-    {
-        id: '2',
-        barcode: '1002',
-        name: 'Loaf of White Bread',
-        nameSi: 'සුදු පාන් රාත්තලක්',
-        nameTa: 'வெள்ளை ரொட்டி துண்டு',
-        price: 180.00,
-        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2672&auto=format&fit=crop',
-        category: 'Bakery'
-    },
-    {
-        id: '3',
-        barcode: '1003',
-        name: 'Amul Fresh Milk (1L)',
-        nameSi: 'අමුල් නැවුම් කිරි (ලීටර් 1)',
-        nameTa: 'அமுல் புதிய பால் (1L)',
-        price: 450.00,
-        image: 'https://images.unsplash.com/photo-1563636619-e9107d6adb20?q=80&w=2670&auto=format&fit=crop',
-        category: 'Dairy'
-    },
-    {
-        id: '4',
-        barcode: '1004',
-        name: 'Basmati Rice (1kg)',
-        nameSi: 'බාස්මතී සහල් (කිලෝග්‍රෑම් 1)',
-        nameTa: 'பாஸ்மதி அரிசி (1 கிலோ)',
-        price: 650.00,
-        image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2670&auto=format&fit=crop',
-        category: 'Grains'
-    },
-    {
-        id: '5',
-        barcode: '1005',
-        name: 'Red Onions (500g)',
-        nameSi: 'රතු ළුණු (ග්‍රෑම් 500)',
-        nameTa: 'சிவப்பு வெங்காயம் (500 கிராம்)',
-        price: 220.00,
-        image: 'https://images.unsplash.com/photo-1508747703725-7197771375a0?q=80&w=2574&auto=format&fit=crop',
-        category: 'Vegetables'
-    },
-    {
-        id: '6',
-        barcode: '1006',
-        name: 'Classic Potato Chips',
-        nameSi: 'ක්ලැසික් අල පෙති',
-        nameTa: 'கிளாசிக் உருளைக்கிழங்கு சிப்ஸ்',
-        price: 320.00,
-        image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?q=80&w=2670&auto=format&fit=crop',
-        category: 'Snacks'
-    },
-    {
-        id: '7',
-        barcode: 'loose_01',
-        name: 'Cavendish Banana',
-        nameSi: 'කෙසෙල්',
-        nameTa: 'வாழைப்பழம்',
-        price: 45.00,
-        image: 'https://images.unsplash.com/photo-1571771894821-ad990241fab7?q=80&w=2670&auto=format&fit=crop',
-        category: 'Fruits'
-    },
-    {
-        id: '8',
-        barcode: 'loose_02',
-        name: 'Sun-ripened Tomato',
-        nameSi: 'තක්කාලි',
-        nameTa: 'தக்காளி',
-        price: 35.00,
-        image: 'https://images.unsplash.com/photo-1518977676601-b53f02bad67b?q=80&w=2674&auto=format&fit=crop',
-        category: 'Vegetables'
-    },
-    {
-        id: '9',
-        barcode: 'loose_03',
-        name: 'Sweet Corn',
-        nameSi: 'ඉරිඟු',
-        nameTa: 'சோளம்',
-        price: 85.00,
-        image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?q=80&w=2674&auto=format&fit=crop',
-        category: 'Grains'
-    }
+    // Fruits
+    { id: '1', barcode: '1001', name: 'Fresh Red Apple', nameSi: 'නැවුම් රතු ඇපල්', nameTa: 'புதிய சிவப்பு ஆப்பிள்', price: 150.00, image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6bccb?q=80&w=2574&auto=format&fit=crop', category: 'Fruits' },
+    { id: '7', barcode: 'loose_01', name: 'Cavendish Banana', nameSi: 'කෙසෙල්', nameTa: 'வாழைப்பழம்', price: 45.00, image: 'https://images.unsplash.com/photo-1571771894821-ad990241fab7?q=80&w=2670&auto=format&fit=crop', category: 'Fruits' },
+    { id: '10', barcode: '1010', name: 'Pineapple (Large)', nameSi: 'අන්නාසි', nameTa: 'அன்னாசி', price: 350.00, image: 'https://images.unsplash.com/photo-1550258114-b81b3f6396df?q=80&w=2670&auto=format&fit=crop', category: 'Fruits' },
+
+    // Vegetables
+    { id: '5', barcode: '1005', name: 'Red Onions (500g)', nameSi: 'රතු ළුණු (ග්‍රෑම් 500)', nameTa: 'சிவப்பு வெங்காயம் (500 கிராம்)', price: 220.00, image: 'https://images.unsplash.com/photo-1508747703725-7197771375a0?q=80&w=2574&auto=format&fit=crop', category: 'Vegetables' },
+    { id: '8', barcode: 'loose_02', name: 'Sun-ripened Tomato', nameSi: 'තක්කාලි', nameTa: 'தக்காளி', price: 35.00, image: 'https://images.unsplash.com/photo-1518977676601-b53f02bad67b?q=80&w=2674&auto=format&fit=crop', category: 'Vegetables' },
+    { id: '11', barcode: '1011', name: 'Carrots (kg)', nameSi: 'කැරට්', nameTa: 'கேரட்', price: 280.00, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?q=80&w=2574&auto=format&fit=crop', category: 'Vegetables' },
+    { id: '12', barcode: '1012', name: 'Fresh Spinach', nameSi: 'නිවිති', nameTa: 'கீரை', price: 120.00, image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?q=80&w=2670&auto=format&fit=crop', category: 'Vegetables' },
+
+    // Dairy
+    { id: '3', barcode: '1003', name: 'Fresh Milk (1L)', nameSi: 'නැවුම් කිරි (ලීටර් 1)', nameTa: 'புதிய பால் (1L)', price: 450.00, image: 'https://images.unsplash.com/photo-1563636619-e9107d6adb20?q=80&w=2670&auto=format&fit=crop', category: 'Dairy' },
+    { id: '13', barcode: '1013', name: 'Greek Yogurt', nameSi: 'යෝගට්', nameTa: 'தயிர்', price: 180.00, image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=2670&auto=format&fit=crop', category: 'Dairy' },
+    { id: '14', barcode: '1014', name: 'Salted Butter (200g)', nameSi: 'බටර්', nameTa: 'வெண்ணெய்', price: 850.00, image: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?q=80&w=2670&auto=format&fit=crop', category: 'Dairy' },
+
+    // Bakery
+    { id: '2', barcode: '1002', name: 'White Bread', nameSi: 'සුදු පාන්', nameTa: 'வெள்ளை ரொட்டி', price: 180.00, image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2672&auto=format&fit=crop', category: 'Bakery' },
+    { id: '15', barcode: '1015', name: 'Chocolate Muffin', nameSi: 'චොකලට් මෆින්', nameTa: 'சாக்லேட் மஃபின்', price: 160.00, image: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=2670&auto=format&fit=crop', category: 'Bakery' },
+    { id: '16', barcode: '1016', name: 'Croissant (Butter)', nameSi: 'ක්‍රොසන්ට්', nameTa: 'குரோசண்ட்', price: 140.00, image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=2574&auto=format&fit=crop', category: 'Bakery' },
+
+    // Meat & Seafood
+    { id: '17', barcode: '1017', name: 'Chicken Breast (500g)', nameSi: 'කුකුළු මස්', nameTa: 'கோழி இறைச்சி', price: 750.00, image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=2574&auto=format&fit=crop', category: 'Meat' },
+    { id: '18', barcode: '1018', name: 'Fresh Salmon Stem', nameSi: 'සැමන් මාළු', nameTa: 'சால்மன் மீன்', price: 2450.00, image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=2574&auto=format&fit=crop', category: 'Meat' },
+
+    // Beverages
+    { id: '19', barcode: '1019', name: 'Orange Juice (1L)', nameSi: 'දොඩම් යුෂ', nameTa: 'ஆரஞ்சு சாறு', price: 580.00, image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=2574&auto=format&fit=crop', category: 'Beverages' },
+    { id: '20', barcode: '1020', name: 'Ceylon Black Tea', nameSi: 'තේ කොළ', nameTa: 'தேநீர்', price: 420.00, image: 'https://images.unsplash.com/photo-1594631252845-29fc458695d7?q=80&w=2574&auto=format&fit=crop', category: 'Beverages' },
+    { id: '21', barcode: '1021', name: 'Sparkling Water', nameSi: 'සෝඩා', nameTa: 'சோடா நீர்', price: 120.00, image: 'https://images.unsplash.com/photo-1554467344-e90459146904?q=80&w=2672&auto=format&fit=crop', category: 'Beverages' },
+
+    // Grains & Pantry
+    { id: '4', barcode: '1004', name: 'Basmati Rice (1kg)', nameSi: 'බාස්මතී සහල්', nameTa: 'பாஸ்மதி அரிசி', price: 650.00, image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2670&auto=format&fit=crop', category: 'Pantry' },
+    { id: '9', barcode: 'loose_03', name: 'Sweet Corn', nameSi: 'ඉරිඟු', nameTa: 'சோளம்', price: 85.00, image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?q=80&w=2674&auto=format&fit=crop', category: 'Pantry' },
+    { id: '22', barcode: '1022', name: 'Extra Virgin Olive Oil', nameSi: 'ඔලිව් තෙල්', nameTa: 'ஆலிவ் எண்ணெய்', price: 2850.00, image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=2574&auto=format&fit=crop', category: 'Pantry' },
+    { id: '23', barcode: '1023', name: 'Penne Pasta (500g)', nameSi: 'පාස්තා', nameTa: 'பாஸ்தா', price: 480.00, image: 'https://images.unsplash.com/photo-1551462147-37885acc3c41?q=80&w=2670&auto=format&fit=crop', category: 'Pantry' },
+
+    // Snacks
+    { id: '6', barcode: '1006', name: 'Potato Chips', nameSi: 'අල පෙති', nameTa: 'உருளைக்கிழங்கு சிப்ஸ்', price: 320.00, image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?q=80&w=2670&auto=format&fit=crop', category: 'Snacks' },
+    { id: '24', barcode: '1024', name: 'Dark Chocolate (85%)', nameSi: 'චොකලට්', nameTa: 'சாக்லேட்', price: 650.00, image: 'https://images.unsplash.com/photo-1515037028865-0a2a82603f7c?q=80&w=2574&auto=format&fit=crop', category: 'Snacks' },
+    { id: '25', barcode: '1025', name: 'Mixed Nuts (200g)', nameSi: 'කජු මිශ්‍රණය', nameTa: 'கலப்பு பருப்புகள்', price: 1250.00, image: 'https://images.unsplash.com/photo-1536628523315-779836365b20?q=80&w=2574&auto=format&fit=crop', category: 'Snacks' },
+
+    // Household
+    { id: '26', barcode: '1026', name: 'Laundry Liquid (2L)', nameSi: 'සේදුම් දියර', nameTa: 'சலவை திரவம்', price: 1450.00, image: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?q=80&w=2678&auto=format&fit=crop', category: 'Household' },
+    { id: '27', barcode: '1027', name: 'Kitchen Paper Towel', nameSi: 'මුළුතැන්ගෙයි කඩදාසි', nameTa: 'சமையலறை காகித துண்டு', price: 380.00, image: 'https://images.unsplash.com/photo-1584622781564-1d9876a13d00?q=80&w=2574&auto=format&fit=crop', category: 'Household' },
+    { id: '28', barcode: '1028', name: 'All Purpose Cleaner', nameSi: 'පිරිසිදු කරනය', nameTa: 'சுத்தம் செய்வது', price: 650.00, image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2574&auto=format&fit=crop', category: 'Household' },
 ];
+
 
 export const members: { [id: string]: { name: string; points: number; discount: number } } = {
     'M001': { name: 'Asiri Perera', points: 1250, discount: 5 },
@@ -136,7 +92,17 @@ export const translations = {
         discount: 'Promotion Applied',
         call_staff: 'Staff Notified',
         staff_desc: 'An attendant will assist you shortly.',
-        confirm: 'Confirm Request'
+        confirm: 'Confirm Request',
+        all_categories: 'All Departments',
+        fruits: 'Fruits',
+        vegetables: 'Vegetables',
+        dairy: 'Dairy',
+        bakery: 'Bakery',
+        meat: 'Meat & Seafood',
+        beverages: 'Beverages',
+        pantry: 'Pantry',
+        snacks: 'Snacks',
+        household: 'Household'
     },
     SI: {
         welcome: 'සාදරයෙන් පිළිගනිමු',
@@ -174,7 +140,17 @@ export const translations = {
         discount: 'වට්ටම්',
         call_staff: 'සහය ඉල්ලා ඇත',
         staff_desc: 'සේවකයෙකු පැමිණෙනු ඇත.',
-        confirm: 'තහවුරු කරන්න'
+        confirm: 'තහවුරු කරන්න',
+        all_categories: 'සියලුම අංශ',
+        fruits: 'පලතුරු',
+        vegetables: 'එළවළු',
+        dairy: 'කිරි නිෂ්පාදන',
+        bakery: 'බේකරි නිෂ්පාදන',
+        meat: 'මස් සහ මාළු',
+        beverages: 'පාන වර්ග',
+        pantry: 'අත්‍යාවශ්‍ය ආහාර',
+        snacks: 'කෑම වර්ග',
+        household: 'ගෘහස්ථ ද්‍රව්‍ය'
     },
     TA: {
         welcome: 'வரவேற்கிறோம்',
@@ -212,6 +188,16 @@ export const translations = {
         discount: 'தள்ளுபடி',
         call_staff: 'ஊழியர் அறியப்பட்டது',
         staff_desc: 'உதவி விரைவில் வரும்.',
-        confirm: 'உறுதிப்படுத்துக'
+        confirm: 'உறுதிப்படுத்துக',
+        all_categories: 'அனைத்து பிரிவுகளும்',
+        fruits: 'பழங்கள்',
+        vegetables: 'காய்கறிகள்',
+        dairy: 'பால் பொருட்கள்',
+        bakery: 'பேக்கரி பொருட்கள்',
+        meat: 'இறைச்சி மற்றும் மீன்',
+        beverages: 'பானங்கள்',
+        pantry: 'சமையலறை பொருட்கள்',
+        snacks: 'நொறுக்குத் தீனிகள்',
+        household: 'வீட்டு உபயோக பொருட்கள்'
     }
 };
