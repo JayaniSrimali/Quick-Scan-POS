@@ -51,12 +51,15 @@ export const useCartStore = create<CartState>((set, get) => ({
         set({ isLoading: true });
         try {
             const res = await fetch('/api/products');
+            if (!res.ok) throw new Error('Failed to fetch products');
+
             const data = await res.json();
-            // If DB is empty, use initial data from lib/data.ts as fallback
-            if (data.length === 0) {
-                set({ allProducts: products });
-            } else {
+
+            // Ensure data is an array and not empty
+            if (Array.isArray(data) && data.length > 0) {
                 set({ allProducts: data });
+            } else {
+                set({ allProducts: products }); // Fallback to local data
             }
         } catch (error) {
             console.error('Failed to fetch products:', error);
