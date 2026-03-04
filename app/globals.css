@@ -1,65 +1,73 @@
 @import "tailwindcss";
 
 @media print {
-
-  /* Comprehensive hide-list for UI clutter */
-  header,
-  footer,
-  .no-print,
-  button,
-  .status-banner,
-  .splash-screen {
-    display: none !important;
-    visibility: hidden !important;
+  @page {
+    size: 80mm auto !important;
+    margin: 0 !important;
   }
 
   body {
     background: white !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 80mm !important;
   }
 
-  /* Force the receipt content to be visible */
-  .receipt-paper {
-    position: relative !important;
+  /* Hide everything except the receipt */
+  body>*:not(.kiosk-container) {
+    display: none !important;
+  }
+
+  .kiosk-container>*:not(.flex-1) {
+    display: none !important;
+  }
+
+  .flex-1>*:not(.receipt-view-content) {
+    /* I might need to check the classes in ReceiptView */
+    display: none !important;
+  }
+
+  /* Simpler approach: Hide all UI and show ONLY .print-content */
+  header,
+  footer,
+  .no-print,
+  .status-banner,
+  button {
+    display: none !important;
+  }
+
+  .print-content {
+    position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     width: 80mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+  }
+
+  .receipt-paper {
+    width: 80mm !important;
+    max-width: 80mm !important;
     padding: 8mm 4mm !important;
     margin: 0 !important;
-    border: none !important;
     box-shadow: none !important;
-    background: white !important;
-    color: black !important;
+    border: none !important;
     visibility: visible !important;
-    display: block !important;
-    z-index: 10000 !important;
   }
 
-  /* Force all nested elements in the receipt to show */
-  .receipt-paper,
-  .receipt-paper div,
-  .receipt-paper span,
-  .receipt-paper p,
-  .receipt-paper h2,
-  .receipt-paper svg {
+  .receipt-paper * {
     visibility: visible !important;
-    opacity: 1 !important;
     color: black !important;
   }
 
-  /* Restore grid and flex for receipt layout */
+  /* Restore layout */
   [class*='grid'] {
     display: grid !important;
   }
 
   [class*='flex'] {
     display: flex !important;
-  }
-
-  @page {
-    size: 80mm auto;
-    margin: 0;
   }
 }
 
